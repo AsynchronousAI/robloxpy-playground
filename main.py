@@ -1,3 +1,5 @@
+# Copy https://raw.githubusercontent.com/roblox-compilers/roblox-py-dev/main/src/rbxpy.py as rbxpy.py in the cwd
+
 from flask import Flask, render_template_string, request
 import subprocess, os
 path = "https://raw.githubusercontent.com/roblox-compilers/roblox-py-dev/main/src/rbxpy.py"
@@ -89,8 +91,10 @@ def index():
         compile.dependencies = []
         try:
           luaCode = translator.translate(pythonCode, False, isAPI=True)
+        except SyntaxError as e:
+          luaCode = "-- syntax error: "+str(e)
         except Exception as e:
-          luaCode = "-- error: "+str(e)
+          luaCode = "-- bug: "+str(e)+"\n-- please report to the RCC Discord Server"
         return render_template_string(luaCode)
     else:
         return render_template_string(htmlCode)
