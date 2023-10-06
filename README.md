@@ -1,3 +1,4 @@
 Playground for roblox-py using Flask, and codemirror.
 
-Requires `rbxpy.py` to be in the same directory as `main.py`.
+*** 
+Upon running it will automatically install the latest roblox-py version and use it like an API
