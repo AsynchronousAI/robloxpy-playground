@@ -1,6 +1,8 @@
 from flask import Flask, render_template_string, request
+import subprocess, os
+path = "https://raw.githubusercontent.com/roblox-compilers/roblox-py-dev/main/src/rbxpy.py"
+os.system(f"curl {path} > rbxpy.py")
 import rbxpy as compile
-import subprocess
 
 app = Flask(__name__)
 
@@ -89,9 +91,10 @@ def index():
           luaCode = translator.translate(pythonCode, False, isAPI=True)
         except Exception as e:
           luaCode = "-- error: "+str(e)
-        subprocess.run("clear")
         return render_template_string(luaCode)
     else:
         return render_template_string(htmlCode)
 
-app.run(host='0.0.0.0', port=81)
+if __name__ == "__main__":
+  from waitress import serve
+  serve(app, host="0.0.0.0", port=8080)
