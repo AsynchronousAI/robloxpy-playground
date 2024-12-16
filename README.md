@@ -1,8 +1,4 @@
-Playground for roblox-py using Flask, and codemirror.
-
-## Dependencies
-- Flask
-- Pylint
-  
-*** 
-Upon running it will automatically install the latest roblox-py version and use it like an API
+> [!WARNING]
+> This code is no longer functional, and this repository is archived.
+> The playground is publicly available at:
+https://coolpro200021.pythonanywhere.com/
